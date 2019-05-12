@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dreamso.downvideoapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,6 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <uses-library android:name ="org.apache.http.legacy" android:required ="false"/>
     </application>
+
+
 
 </manifest>

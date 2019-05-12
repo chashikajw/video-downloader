@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".fragments.tabFragments.TrendingTabFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="trending" />
+        android:id="@+id/mList_videos"/>
 
 </FrameLayout>

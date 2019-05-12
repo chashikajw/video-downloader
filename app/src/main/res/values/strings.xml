@@ -4,6 +4,9 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <!-- API keys -->
+    <string name="google_youtube_api_key">AIzaSyDY5KEE5eQbAxowrjoQY7L-N3wql81I45k</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
