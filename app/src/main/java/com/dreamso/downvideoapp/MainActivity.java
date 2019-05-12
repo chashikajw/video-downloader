@@ -15,8 +15,6 @@ import com.dreamso.downvideoapp.fragments.SubscriptionFragment;
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener  {
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
