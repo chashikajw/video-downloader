@@ -3,6 +3,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="hint_search">Searching for…</string>
+    <string name="search_description">City, Cities</string>
 
     <!-- API keys -->
     <string name="google_youtube_api_key">AIzaSyDY5KEE5eQbAxowrjoQY7L-N3wql81I45k</string>

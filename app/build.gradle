@@ -22,8 +22,8 @@ android {
         }
     }
 }
-repositories{
-    maven { url "http://jitpack.io"}
+repositories {
+    maven { url "http://jitpack.io" }
 }
 
 dependencies {
@@ -43,4 +43,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('E:\\Projects\\Fiverr\\video-downloader\\.idea\\libraries\\YouTubeAndroidPlayerApi.jar')
+    implementation 'com.github.mancj:MaterialSearchBar:0.8.2'
 }

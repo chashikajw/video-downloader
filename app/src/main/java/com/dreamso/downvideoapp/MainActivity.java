@@ -1,13 +1,22 @@
 package com.dreamso.downvideoapp;
 
+import android.app.SearchManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.dreamso.downvideoapp.activities.youtube.YoutubeSearchActivity;
 import com.dreamso.downvideoapp.fragments.HomeFragment;
 import com.dreamso.downvideoapp.fragments.MyFileFragment;
 import com.dreamso.downvideoapp.fragments.SubscriptionFragment;
@@ -60,4 +69,22 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         return loadFragment(fragment);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.options_menu, menu);
+
+        SearchView search = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.search));
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        search.setSearchableInfo(searchManager.getSearchableInfo(new ComponentName(this, YoutubeSearchActivity.class)));
+        search.setQueryHint(getResources().getString(R.string.hint_search));
+
+        Log.e("SearchQuery", "querererereer");
+        return true;
+    }
+
 }
