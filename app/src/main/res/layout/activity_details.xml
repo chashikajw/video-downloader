@@ -1,33 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.youtube.DetailsActivity">
+    tools:context="com.dreamso.downvideoapp.activities.youtube.DetailsActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <!--<ImageView-->
+    <!--android:id="@+id/imageView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="170dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:scaleType="centerCrop"-->
+    <!--android:tag="image_tag" />-->
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtube_player"
+        android:layout_height="170dp"
+        android:layout_width="match_parent"/>
+
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="130dp"
+        android:id="@+id/title_layout"
+        android:layout_below="@+id/youtube_player"
+        android:background="#e4e4e4"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:maxLines="2"
+            android:text="Android Name sjdnjas ajsk djak sjdka kaskdjaksdj kjskdjaksj"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textSize="20dp" />
 
-    </android.support.design.widget.AppBarLayout>
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimary"
+            android:text="Android Name sjdnjas ajskdjaksjdka kaskdjaksdj kjskdjaksj"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="16dp" />
 
-    <include layout="@layout/content_details" />
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:text="Download This Video"
+            android:gravity="center"
+            android:onClick="downloadVideo"
+            android:textColor="@color/cardview_dark_background"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+    <!--real image size is 40x50px-->
+    <ImageView
+        android:id="@+id/img_left_header"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:onClick="share_btn_pressed"
+        android:scaleType="fitCenter"
+        android:layout_below="@+id/youtube_player"
+        android:src="@drawable/ic_home_black_24dp"
+        android:visibility="visible" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <TextView
+        android:layout_below="@+id/title_layout"
+        android:id="@+id/textViewDes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:layout_gravity="left"
+        android:layout_margin="10dp"
+        android:maxLines="4"
+        android:text="Android Name sjdnjas ajskdjaksjdka kaskdjaksdj kjskdjaksjAndroid Name sjdnjas ajskdjaksjdka kaskdjaksdj kjskdjaksjAndroid Name sjdnjas ajskdjaksjdka kaskdjaksdj kjskdjaksjAndroid Name sjdnjas ajskdjaksjdka kaskdjaksdj kjskdjaksjAndroid Name sjdnjas ajskdjaksjdka kaskdjaksdj kjskdjaksj"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="16dp" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <LinearLayout
+        android:layout_below="@+id/textViewDes"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FAVOURITE"
+            android:textColor="@color/colorAccent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="COMMENTS"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/cardview_dark_background"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mList_videos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <!--<ImageView-->
+    <!--android:layout_width="40dp"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginTop="155dp"-->
+    <!--android:layout_marginRight="20dp"-->
+    <!--android:onClick="playVideo"-->
+    <!--android:src="@drawable/play"/>-->
+</RelativeLayout>

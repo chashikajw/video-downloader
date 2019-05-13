@@ -11,28 +11,34 @@ import android.widget.TextView;
 
 import com.dreamso.downvideoapp.R;
 import com.dreamso.downvideoapp.fragments.models.YoutubeDataModel;
+import com.dreamso.downvideoapp.interfaces.OnItemClickListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class VideoPostAdapter  extends RecyclerView.Adapter<VideoPostAdapter.YoutubePostHolder> {
+public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.YoutubePostHolder> {
 
     private ArrayList<YoutubeDataModel> dataSet;
     private Context mContext = null;
+    private final OnItemClickListener listener;
 
-    public VideoPostAdapter(Context mContext, ArrayList<YoutubeDataModel> dataSet){
+
+    public VideoPostAdapter(Context mContext, ArrayList<YoutubeDataModel> dataSet, OnItemClickListener listener) {
         this.dataSet = dataSet;
         this.mContext = mContext;
+        this.listener = listener;
+
     }
+
     @Override
-    public YoutubePostHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public YoutubePostHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.youtube_post_layout,parent,false);
         YoutubePostHolder postHolder = new YoutubePostHolder(view);
         return postHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull YoutubePostHolder holder, int position) {
+    public void onBindViewHolder(YoutubePostHolder holder, int position) {
 
         //set the views here
         TextView textViewTitle = holder.textViewTitle;
@@ -45,10 +51,12 @@ public class VideoPostAdapter  extends RecyclerView.Adapter<VideoPostAdapter.You
         textViewTitle.setText(object.getTitle());
         textViewDes.setText(object.getDescription());
         textViewDate.setText(object.getPublishedAt());
-        //holder.bind(dataSet.get(position), listener);
+        holder.bind(dataSet.get(position), listener);
 
         //TODO: image will be downloaded from url
         Picasso.with(mContext).load(object.getThumbnail()).into(ImageThumb);
+
+
 
     }
 
@@ -57,12 +65,10 @@ public class VideoPostAdapter  extends RecyclerView.Adapter<VideoPostAdapter.You
         return dataSet.size();
     }
 
-
-    public static class YoutubePostHolder extends RecyclerView.ViewHolder{
-
+    public static class YoutubePostHolder extends RecyclerView.ViewHolder {
         TextView textViewTitle;
         TextView textViewDes;
-        TextView textViewDate ;
+        TextView textViewDate;
         ImageView ImageThumb;
 
         public YoutubePostHolder(View itemView) {
@@ -72,6 +78,10 @@ public class VideoPostAdapter  extends RecyclerView.Adapter<VideoPostAdapter.You
             this.textViewDate = (TextView) itemView.findViewById(R.id.textViewDate);
             this.ImageThumb = (ImageView) itemView.findViewById(R.id.ImageThumb);
 
+        }
+
+        public void bind(final YoutubeDataModel item, final OnItemClickListener listener) {
+            itemView.setOnClickListener(v -> listener.onItemClick(item));
         }
     }
 }

@@ -1,8 +1,10 @@
 package com.dreamso.downvideoapp.fragments.tabFragments;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,8 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dreamso.downvideoapp.R;
+import com.dreamso.downvideoapp.activities.youtube.DetailsActivity;
 import com.dreamso.downvideoapp.fragments.adapters.VideoPostAdapter;
 import com.dreamso.downvideoapp.fragments.models.YoutubeDataModel;
+import com.dreamso.downvideoapp.interfaces.OnItemClickListener;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -26,6 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -61,11 +66,17 @@ public class TrendingTabFragment extends Fragment {
     }
 
     private void initList(ArrayList<YoutubeDataModel> mListData) {
-
         mList_videos.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new VideoPostAdapter(getActivity(),mListData);
+        adapter = new VideoPostAdapter(getActivity(), mListData, new OnItemClickListener() {
+            @Override
+            public void onItemClick(YoutubeDataModel item) {
+                YoutubeDataModel youtubeDataModel = item;
+                Intent intent = new Intent(getActivity(), DetailsActivity.class);
+                intent.putExtra(YoutubeDataModel.class.toString(), youtubeDataModel);
+                startActivity(intent);
+            }
+        });
         mList_videos.setAdapter(adapter);
-
 
     }
 
