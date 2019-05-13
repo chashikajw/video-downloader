@@ -6,8 +6,8 @@
     tools:context=".fragments.tabFragments.TrendingTabFragment">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/mList_videos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/mList_videos"/>
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

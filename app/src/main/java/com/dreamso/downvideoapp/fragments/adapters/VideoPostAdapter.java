@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.dreamso.downvideoapp.R;
 import com.dreamso.downvideoapp.fragments.models.YoutubeDataModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -47,13 +48,13 @@ public class VideoPostAdapter  extends RecyclerView.Adapter<VideoPostAdapter.You
         //holder.bind(dataSet.get(position), listener);
 
         //TODO: image will be downloaded from url
-        //Picasso.with(mContext).load(object.getThumbnail()).into(ImageThumb);
+        Picasso.with(mContext).load(object.getThumbnail()).into(ImageThumb);
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return dataSet.size();
     }
 
 

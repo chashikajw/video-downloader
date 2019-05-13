@@ -21,6 +21,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,11 +35,12 @@ public class TrendingTabFragment extends Fragment {
 
     private static String GOOGLE_YOUTUBE_API_KEY = "AIzaSyDY5KEE5eQbAxowrjoQY7L-N3wql81I45k";//here you should use your api key for testing purpose you can use this api also
     private static String CHANNEL_ID = "UCoMdktPbSTixAyNGwb-UYkQ"; //here you should use your channel id for testing purpose you can use this api also
-    private static String CHANNLE_GET_URL = "https://www.googleapis.com/youtube/v3/search?part=snippet&order=date&channelId=" + CHANNEL_ID + "&maxResults=20&key=" + GOOGLE_YOUTUBE_API_KEY + "";
+    private static String REGION_CODE = "IN";
+    private static String CHANNLE_GET_URL = "https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=" + REGION_CODE + "&maxResults=20&key=" + GOOGLE_YOUTUBE_API_KEY + "";
 
     private RecyclerView mList_videos = null;
     private VideoPostAdapter adapter = null;
-    private ArrayList<YoutubeDataModel> mListData = null;
+    private ArrayList<YoutubeDataModel> mListData = new ArrayList<>();
 
 
     public TrendingTabFragment() {
@@ -53,13 +55,13 @@ public class TrendingTabFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragmenttab_trending, container, false);
 
         mList_videos = (RecyclerView) rootView.findViewById(R.id.mList_videos);
-        initList();
+        initList(mListData);
         new RequestYoutubeAPI().execute();
         return rootView;
     }
 
-    private void initList() {
-        mListData = new ArrayList<>();
+    private void initList(ArrayList<YoutubeDataModel> mListData) {
+
         mList_videos.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new VideoPostAdapter(getActivity(),mListData);
         mList_videos.setAdapter(adapter);
@@ -100,6 +102,8 @@ public class TrendingTabFragment extends Fragment {
                 try{
                     JSONObject jsonObject = new JSONObject(response);
                     Log.e("response",jsonObject.toString());
+                    mListData = parseVideoListFromResponse(jsonObject);
+                    initList(mListData);
 
 
                 }catch(JSONException e){
@@ -107,6 +111,49 @@ public class TrendingTabFragment extends Fragment {
                 }
             }
         }
+    }
+
+    private ArrayList<YoutubeDataModel> parseVideoListFromResponse(JSONObject jsonObject){
+        ArrayList<YoutubeDataModel> mList = new ArrayList<>();
+
+        if(jsonObject.has("items")){
+            try {
+                JSONArray jsonArray = jsonObject.getJSONArray("items");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject json = jsonArray.getJSONObject(i);
+
+                    if (json.has("id")) {
+
+                        String video_id = json.getString("id");
+
+                        if (json.has("kind")) {
+                            if (json.getString("kind").equals("youtube#video")) {
+                                YoutubeDataModel youtubeObject = new YoutubeDataModel();
+
+                                JSONObject jsonSnippet = json.getJSONObject("snippet");
+                                String title = jsonSnippet.getString("title");
+                                String description = jsonSnippet.getString("description");
+                                String publishedAt = jsonSnippet.getString("publishedAt");
+                                String thumbnail = jsonSnippet.getJSONObject("thumbnails").getJSONObject("high").getString("url");
+
+                                youtubeObject.setTitle(title);
+                                youtubeObject.setDescription(description);
+                                youtubeObject.setPublishedAt(publishedAt);
+                                youtubeObject.setThumbnail(thumbnail);
+                                youtubeObject.setVideo_id(video_id);
+                                mList.add(youtubeObject);
+                                Log.e("youtubeobject",youtubeObject.getTitle());
+
+                            }
+                        }
+                    }
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return mList;
     }
 
 }
