@@ -15,8 +15,8 @@
     <!--android:tag="image_tag" />-->
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/youtube_player"
-        android:layout_height="170dp"
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent"
+        android:layout_height="270dp" />
 
 
 
@@ -75,7 +75,7 @@
         android:onClick="share_btn_pressed"
         android:scaleType="fitCenter"
         android:layout_below="@+id/youtube_player"
-        android:src="@drawable/ic_home_black_24dp"
+        android:src="@drawable/ic_share_black_24dp"
         android:visibility="visible" />
 
     <TextView
