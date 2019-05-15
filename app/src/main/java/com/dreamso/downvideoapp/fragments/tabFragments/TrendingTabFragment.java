@@ -18,6 +18,7 @@ import com.dreamso.downvideoapp.activities.youtube.DetailsActivity;
 import com.dreamso.downvideoapp.fragments.adapters.VideoPostAdapter;
 import com.dreamso.downvideoapp.fragments.models.YoutubeDataModel;
 import com.dreamso.downvideoapp.interfaces.OnItemClickListener;
+import com.neovisionaries.i18n.CountryCode;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -32,6 +33,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,6 +43,7 @@ public class TrendingTabFragment extends Fragment {
     private static String GOOGLE_YOUTUBE_API_KEY = "AIzaSyDY5KEE5eQbAxowrjoQY7L-N3wql81I45k";//here you should use your api key for testing purpose you can use this api also
     private static String CHANNEL_ID = "UCoMdktPbSTixAyNGwb-UYkQ"; //here you should use your channel id for testing purpose you can use this api also
     private static String REGION_CODE = "IN";
+
     private static String CHANNLE_GET_URL = "https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=" + REGION_CODE + "&maxResults=20&key=" + GOOGLE_YOUTUBE_API_KEY + "";
 
     private RecyclerView mList_videos = null;
@@ -58,6 +61,19 @@ public class TrendingTabFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragmenttab_trending, container, false);
+
+
+
+
+
+        String locale = rootView.getResources().getConfiguration().locale.getCountry();
+
+        CountryCode cc = CountryCode.getByCode(locale);
+        REGION_CODE = cc.getAlpha2();
+
+        Log.e("region_code", REGION_CODE );
+        CHANNLE_GET_URL = "https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=" + REGION_CODE + "&maxResults=20&key=" + GOOGLE_YOUTUBE_API_KEY + "";
+
 
         mList_videos = (RecyclerView) rootView.findViewById(R.id.mList_videos);
         initList(mListData);

@@ -8,8 +8,10 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
 import com.dreamso.downvideoapp.R;
+import com.dreamso.downvideoapp.fragments.adapters.BrowserItemAdapter;
 import com.dreamso.downvideoapp.fragments.adapters.TabAdapter;
 
 public class HomeFragment extends Fragment {
@@ -17,11 +19,15 @@ public class HomeFragment extends Fragment {
     private TabLayout tabLayout = null;
     private ViewPager viewPager = null;
 
+
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View RootView = inflater.inflate(R.layout.fragment_home, container, false);
+
 
 
         tabLayout = (TabLayout) RootView.findViewById(R.id.tab_layout);

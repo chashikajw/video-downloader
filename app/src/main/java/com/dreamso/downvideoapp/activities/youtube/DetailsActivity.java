@@ -44,6 +44,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -54,7 +55,7 @@ import at.huber.youtubeExtractor.YtFile;
 
 public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
     private static final int READ_STORAGE_PERMISSION_REQUEST_CODE = 1;
-    private static String GOOGLE_YOUTUBE_API = "AIzaSyBH8szUCt1ctKQabVeQuvWgowaKxHVjn8E";
+    private static String GOOGLE_YOUTUBE_API = "AIzaSyDY5KEE5eQbAxowrjoQY7L-N3wql81I45k";
     private YoutubeDataModel youtubeDataModel = null;
     TextView textViewName;
     TextView textViewDes;
@@ -214,7 +215,10 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
     public void downloadVideo(View view) {
         //get the download URL
         String youtubeLink = ("https://www.youtube.com/watch?v=" + youtubeDataModel.getVideo_id());
-        YouTubeUriExtractor ytEx = new YouTubeUriExtractor(this) {
+        Log.e("VIdeoId :", youtubeDataModel.getVideo_id());
+        Log.e("Youtube Link:", youtubeLink);
+
+        YouTubeUriExtractor ytEx = new YouTubeUriExtractor(DetailsActivity.this) {
             @Override
             public void onUrisAvailable(String videoID, String videoTitle, SparseArray<YtFile> ytFiles) {
                 if (ytFiles != null) {
@@ -234,6 +238,8 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
 
         ytEx.execute(youtubeLink);
     }
+
+
 
     private ProgressDialog pDialog;
 
@@ -262,7 +268,7 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
             try {
                 u = new URL(params[0]);
                 is = u.openStream();
-                URLConnection huc = (URLConnection) u.openConnection();
+                HttpURLConnection huc = (HttpURLConnection) u.openConnection();
                 huc.connect();
                 int size = huc.getContentLength();
 

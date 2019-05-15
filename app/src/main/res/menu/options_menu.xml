@@ -6,8 +6,9 @@
     <group android:checkableBehavior="single">
         <item android:id="@+id/search"
             android:title="@string/search_description"
-            android:icon="@drawable/ic_youtube_searched_for_black_24dp"
+            android:icon="@drawable/ic_search_youtube"
             app:actionViewClass="android.widget.SearchView"
+
             app:showAsAction="collapseActionView|ifRoom" />
     </group>
 
