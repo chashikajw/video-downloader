@@ -213,8 +213,12 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
     }
 
     public void downloadVideo(View view) {
+        String link = ("https://www.youtube.com/watch?v=" + youtubeDataModel.getVideo_id());
+        Intent myIntent = new Intent(getBaseContext(),   DownloadLayout.class);
+        myIntent.putExtra("link",link);
+        startActivity(myIntent);
         //get the download URL
-        String youtubeLink = ("https://www.youtube.com/watch?v=" + youtubeDataModel.getVideo_id());
+        /*String youtubeLink = ("https://www.youtube.com/watch?v=" + youtubeDataModel.getVideo_id());
         Log.e("VIdeoId :", youtubeDataModel.getVideo_id());
         Log.e("Youtube Link:", youtubeLink);
 
@@ -237,6 +241,7 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
         };
 
         ytEx.execute(youtubeLink);
+         */
     }
 
 

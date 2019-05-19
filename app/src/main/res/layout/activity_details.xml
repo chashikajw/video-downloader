@@ -19,12 +19,12 @@
         android:layout_height="270dp" />
 
 
-
     <LinearLayout
+        android:id="@+id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:id="@+id/title_layout"
         android:layout_below="@+id/youtube_player"
+        android:layout_marginTop="3dp"
         android:background="#e4e4e4"
         android:orientation="vertical">
 
@@ -49,20 +49,12 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:maxLines="1"
-            android:textColor="@color/colorPrimary"
             android:text="Android Name sjdnjas ajskdjaksjdka kaskdjaksdj kjskdjaksj"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/colorPrimary"
             android:textSize="16dp" />
 
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="30dp"
-            android:text="Download This Video"
-            android:gravity="center"
-            android:onClick="downloadVideo"
-            android:textColor="@color/cardview_dark_background"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="5dp"/>
+
     </LinearLayout>
     <!--real image size is 40x50px-->
     <ImageView
@@ -77,6 +69,20 @@
         android:layout_below="@+id/youtube_player"
         android:src="@drawable/ic_share_black_24dp"
         android:visibility="visible" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignEnd="@+id/title_layout"
+        android:layout_alignBottom="@+id/title_layout"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="-2dp"
+        android:gravity="center"
+        android:onClick="downloadVideo"
+        android:src="@drawable/ic_file_download_black_24dp"
+        android:text="Download This Video" />
 
     <TextView
         android:layout_below="@+id/title_layout"
@@ -117,6 +123,11 @@
             android:layout_marginBottom="10dp"
             android:textColor="@color/cardview_dark_background"/>
 
+
+
+
+
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/mList_videos"
             android:layout_width="match_parent"
@@ -131,4 +142,8 @@
     <!--android:layout_marginRight="20dp"-->
     <!--android:onClick="playVideo"-->
     <!--android:src="@drawable/play"/>-->
+
+
+
 </RelativeLayout>
+

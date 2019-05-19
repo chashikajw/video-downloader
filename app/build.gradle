@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 28
@@ -24,6 +26,7 @@ android {
 }
 repositories {
     maven { url "http://jitpack.io" }
+    mavenCentral()
 }
 
 dependencies {
@@ -35,6 +38,7 @@ dependencies {
     implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.android.support:cardview-v7:28.0.0'
 
+
     implementation 'com.squareup.okhttp3:okhttp:3.14.1'
     implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     //for image show
@@ -42,10 +46,22 @@ dependencies {
     implementation 'com.github.HaarigerHarald:android-youtubeExtractor:master-SNAPSHOT'
     implementation 'com.neovisionaries:nv-i18n:1.20'
 
+    implementation 'com.github.codekidX:storage-chooser:2.0.4.2'
+
+    implementation 'com.github.tony19:named-regexp:0.2.5'
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
+    implementation 'com.googlecode.mp4parser:isoparser:1.1.21'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('E:\\Projects\\Fiverr\\video-downloader\\.idea\\libraries\\YouTubeAndroidPlayerApi.jar')
     implementation 'com.github.mancj:MaterialSearchBar:0.8.2'
     implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
