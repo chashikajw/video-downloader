@@ -15,7 +15,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.dreamso.downvideoapp.R
 import com.dreamso.downvideoapp.YoutubeDL.VideoInfo
-import com.dreamso.downvideoapp.activities.youtube.DownloadLayout
+import com.dreamso.downvideoapp.activities.youtube.DetailsActivity
 import java.util.Locale
 
 
@@ -79,7 +79,7 @@ class VideoInfoAdapter(internal var context: Context, internal var videoInfos: L
 
             when (v.id) {
                 R.id.copyLink -> copyUrl(videoInfo)
-                R.id.videoInfo -> (context as DownloadLayout).loadVideoInfo(videoInfo)
+                R.id.videoInfo -> (context as DetailsActivity).loadVideoInfo(videoInfo)
             }
         }
     }

@@ -11,19 +11,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import com.dreamso.downvideoapp.R
 import com.dreamso.downvideoapp.YoutubeDL.Format
 import com.dreamso.downvideoapp.YoutubeDL.Utils.FormatUtils
 import com.dreamso.downvideoapp.activities.youtube.DetailsActivity
-import com.dreamso.downvideoapp.activities.youtube.DownloadLayout
 import java.util.Locale
 
 /**
  * Created by harshithgoka on 12/16/2017 AD.
  */
 
-class FormatAdapter(internal var context: Context, internal var formats: List<Format>?, internal var mainActivity:DownloadLayout) : RecyclerView.Adapter<FormatAdapter.MyViewHolder>() {
+class FormatAdapter(internal var context: Context, internal var formats: List<Format>?, internal var mainActivity:DetailsActivity) : RecyclerView.Adapter<FormatAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var quality: TextView

@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.youtube.DownloadLayout"></activity>
         <activity android:name=".activities.facebook.FacebookWebActivity" />
         <activity
             android:name=".activities.youtube.YoutubeSearchActivity"

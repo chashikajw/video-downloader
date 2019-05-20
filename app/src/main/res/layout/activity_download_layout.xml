@@ -10,22 +10,7 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="@dimen/text_margin"
-            app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
-            <TextView
-                android:id="@+id/app_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
 
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-                android:text="@string/app_name"/>
-        </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/mainContent"
@@ -59,29 +44,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/textInputLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
 
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="@color/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/url"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/hint_search"
-                    android:imeOptions="actionGo"
-                    android:inputType="textUri"
-                    android:textSize="20sp" />
-            </android.support.design.widget.TextInputLayout>
 
             <ProgressBar
                 android:id="@+id/progressBar2"
@@ -123,38 +86,7 @@
         </android.support.constraint.ConstraintLayout>
     </android.support.v4.widget.NestedScrollView>
 
-    <android.support.design.button.MaterialButton
-        android:id="@+id/paste"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="64dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="18dp"
-        android:layout_marginEnd="18dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:textSize="16sp"
 
-        android:gravity="center"
-        android:maxLines="1"
-        android:textStyle="bold"
-        android:textColor="@color/textColor"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        android:text="Paste"
-        android:elevation="6dp"
-        app:cornerRadius="32dp"
-        app:iconPadding="12dp"
-        app:iconSize="24dp"
-
-        app:iconTint="@android:color/white"
-        app:iconTintMode="multiply"
-
-        app:backgroundTint="@color/white"
-        app:layout_anchor="@id/mainContent"
-        app:layout_anchorGravity="bottom|end">
-
-    </android.support.design.button.MaterialButton>
 
     <include
         layout="@layout/formats_layout" />
