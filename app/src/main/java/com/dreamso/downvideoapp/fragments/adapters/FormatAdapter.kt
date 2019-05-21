@@ -25,14 +25,14 @@ class FormatAdapter(internal var context: Context, internal var formats: List<Fo
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var quality: TextView
-        var itag: TextView
+        //var itag: TextView
         var ext: TextView
         var audio: View
         var video: View
 
         init {
             quality = itemView.findViewById(R.id.format_quality)
-            itag = itemView.findViewById(R.id.format_itag)
+            //itag = itemView.findViewById(R.id.format_itag)
             ext = itemView.findViewById(R.id.format_ext)
             audio = itemView.findViewById(R.id.audio)
             video = itemView.findViewById(R.id.video)
@@ -63,7 +63,7 @@ class FormatAdapter(internal var context: Context, internal var formats: List<Fo
         val format = formats!![position]
         holder.quality.text = FormatUtils.getTitle(format)
         holder.ext.text = format.extension
-        holder.itag.text = String.format(Locale.UK, "%d", format.itag)
+        //holder.itag.text = String.format(Locale.UK, "%d", format.itag)
 
         holder.audio.setBackgroundResource(if (format.audio) R.drawable.ic_volume_up_black_24dp else R.drawable.ic_volume_off_black_24dp)
         holder.video.setBackgroundResource(if (format.video) R.drawable.ic_videocam_black_24dp else R.drawable.ic_videocam_off_black_24dp)

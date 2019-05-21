@@ -57,21 +57,21 @@ object FormatUtils {
             format.audio = audio
             format.video = video
 
-            ret = if (audio && video) {
+           /* ret = if (audio && video) {
                 "Video + Audio"
             } else if (video) {
                 "Video Only"
             } else {
                 "Audio Only"
-            }
+            } */
 
             if (fmt.has("height")) {
                 ret += " ${fmt.getInt("height")}p"
             }
 
-            if (fmt.has("abr")) {
+           /* if (fmt.has("abr")) {
                 ret += " ${fmt.getInt("abr")}kbps"
-            }
+            } */
         } catch (e: JSONException) {
             e.printStackTrace()
         }

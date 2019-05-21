@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_sheet"
+
     style="@style/Widget.MaterialComponents.CardView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,6 +18,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@color/cardview_light_background"
         android:layout_height="match_parent">
 
         <TextView
@@ -54,16 +56,17 @@
             android:background="@android:color/darker_gray"
             app:layout_constraintTop_toBottomOf="@+id/video_title" />
 
-        <com.dreamso.downvideoapp.customUI.RecyclerViewEmptySupport
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/progressBar">
 
-        </com.dreamso.downvideoapp.customUI.RecyclerViewEmptySupport>
+        </android.support.v7.widget.RecyclerView>
+
 
         <ProgressBar
             android:id="@+id/progressBar"

@@ -24,6 +24,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -35,6 +36,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -112,9 +114,9 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
 
     Pattern youtubeUrlPattern;
 
-    RecyclerViewEmptySupport formatsRecyclerView;
+    RecyclerView formatsRecyclerView;
     FormatAdapter formatAdapter;
-    LinearLayoutManager formatLinearLayoutManager;
+   // GridLayoutManager formatLinearLayoutManager;
 
     RecyclerViewEmptySupport viRecyclerView;
     VideoInfoAdapter viAdapter;
@@ -216,11 +218,13 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
 
         videoTitle = findViewById(R.id.video_title);
         // Formats
+        int numberOfColumns = 3;
         formatsRecyclerView = findViewById(R.id.recycler_view);
+        formatsRecyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         formatAdapter = new FormatAdapter(getApplicationContext(), formats, this);
         formatsRecyclerView.setAdapter(formatAdapter);
-        formatLinearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        formatsRecyclerView.setLayoutManager(formatLinearLayoutManager);
+
+
 
 
 
