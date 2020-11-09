@@ -86,7 +86,7 @@ import me.harshithgoka.youtubedl.Adapters.FormatAdapter;
 
 public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
     private static final int READ_STORAGE_PERMISSION_REQUEST_CODE = 1;
-    private static String GOOGLE_YOUTUBE_API = "AIzaSyDY5KEE5eQbAxowrjoQY7L-N3wql81I45k";
+    private static String GOOGLE_YOUTUBE_API = "InsertYourGOOGLE_YOUTUBE_API";
     private YoutubeDataModel youtubeDataModel = null;
     TextView textViewName;
     TextView textViewDes;
