@@ -7,7 +7,7 @@
     <string name="search_description">City, Cities</string>
 
     <!-- API keys -->
-    <string name="google_youtube_api_key">AIzaSyDY5KEE5eQbAxowrjoQY7L-N3wql81I45k</string>
+    <string name="google_youtube_api_key">Insert_you_youtube_api_key</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
